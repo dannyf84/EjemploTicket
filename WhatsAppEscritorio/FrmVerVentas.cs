@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WhatsAppEscritorio.rep;
 
 namespace WhatsAppEscritorio
 {
@@ -34,6 +35,12 @@ namespace WhatsAppEscritorio
 
         }
 
-
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int IdVenta = Convert.ToInt32(idTextBox.Text);
+            BaseTicket b = new BaseTicket();
+            b.Show();
+            b.VerTicket(IdVenta);
+        }
     }
 }
