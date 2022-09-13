@@ -18,10 +18,6 @@ namespace WhatsAppEscritorio
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-        }
-
         private void CalcularTotal()
         {
             double TOTAL = 0;
@@ -40,7 +36,7 @@ namespace WhatsAppEscritorio
             double Precio = double.Parse(txtPrecio.Text.Trim());
             string Importe = (double.Parse(Cantidad) * (Precio)).ToString("0.00");
             //
-            DgvTemp.Rows.Add(new object[] {0, Cantidad, Descripcion, Precio.ToString("0.00"), Importe });
+            DgvTemp.Rows.Add(new object[] { 0, Cantidad, Descripcion, Precio.ToString("0.00"), Importe });
             CalcularTotal();
             Nud1.Value = 1;
             txtDescripcion.Clear();
@@ -69,12 +65,17 @@ namespace WhatsAppEscritorio
                     oD.Descripcion = dr.Cells[2].Value.ToString();
                     oD.PrecioUnitario = decimal.Parse(dr.Cells[3].Value.ToString());
                     oD.Importe = decimal.Parse(dr.Cells[4].Value.ToString());
-                    db.VentaDetalle.Add(oD);    
+                    db.VentaDetalle.Add(oD);
                 }
                 db.SaveChanges();
             }
             MessageBox.Show("Venta Guardada Exitosamente");
-            this.Close();
+            txtCliente.Clear();
+            DgvTemp.Rows.Clear();
+            txtNum.Focus();
         }
+
+
+
     }
 }
